@@ -1,7 +1,9 @@
 <?php
 require_once('model/user.php');
 
-class UserTest extends PHPUnit_Export_TestCase {
+use PHPUnit\Framework\TestCase;
+
+class UserTest extends TestCase {
 	private $user;
 	public static function setUpBeforeClass () {
 		$user = new User();
