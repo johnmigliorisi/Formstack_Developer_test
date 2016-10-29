@@ -1,7 +1,7 @@
 <?php
 require_once('model/user.php');
 
-use PHPUnit\Framework\TestCase;
+require_once('PHPUnit/Autoload.php');
 
 class UserTest extends TestCase {
 	private $user;
