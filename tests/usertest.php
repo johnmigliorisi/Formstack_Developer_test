@@ -3,6 +3,8 @@ require_once('model/user.php');
 
 require_once('PHPUnit/Autoload.php');
 
+use PHPUnit\Framework\TestCase;
+
 class UserTest extends TestCase {
 	private $user;
 	public static function setUpBeforeClass () {
