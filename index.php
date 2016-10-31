@@ -18,5 +18,6 @@ $users = $userObj->find();
         <?php else: ?>
             <p>No users yet!!</p>
         <?php endif; ?>
+        <p><a href="add.php">Add a user</a></p>
     </body>
 </html>
