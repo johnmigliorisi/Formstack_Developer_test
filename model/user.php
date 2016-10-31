@@ -49,12 +49,34 @@ class User
     }
 
     /**
+    * delete a user record
+    * @param $id user_id
+    * return nothing
+    */
+    public function remove($id)
+    {
+        $sql = "DELETE FROM user WHERE user_id = :user_id";
+        $parameters = array(
+            ':user_id' => $id,
+        );
+        try {   
+            $db = new DBHandler();
+            $stmt = $db->getInstance()->prepare($sql);
+            $stmt->execute($parameters);
+            //return $db->lastInsertId();   
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            exit;
+        }
+    }
+
+    /**
     * create new user record
     * @param $firstName first_name
     * @param $lastName last_name
     * @param $email email
     * @param $password password
-    * return object
+    * return nothing
     */
     public function create($firstName, $lastName, $email, $password)
     {
@@ -67,14 +89,14 @@ class User
             password
         )
         VALUES (
-            :id,
+            :user_id,
             :first_name,
             :last_name,
             :email,
             :password
         )";
         $parameters = array(
-        ':id' => $id,
+        ':user_id' => $id,
         ':first_name' => $firstName,
         ':last_name' => $lastName,
         ':email' => $email,
