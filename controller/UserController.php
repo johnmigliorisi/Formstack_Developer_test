@@ -48,4 +48,20 @@ class UserController
         $userObj->update($id, $firstName, $lastName, $email, $password);
         return $id;
     }
+
+    /**
+    * add a new user
+    * @param $id user_id
+    * @param $firstName first_name
+    * @param $lastName last_name
+    * @param $email email
+    * @param $password password
+    * return array
+    */
+    public function add($firstName, $lastName, $email, $password)
+    {
+        $userObj = new User();
+        $userObj->create($firstName, $lastName, $email, $password);
+        return $id;
+    }
 }
