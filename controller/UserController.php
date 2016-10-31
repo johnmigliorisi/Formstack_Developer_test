@@ -75,4 +75,15 @@ class UserController
         $userObj->create($firstName, $lastName, $email, $password);
         return $id;
     }
+
+    /**
+    * encrypt the password before it is passed to the add function
+    * @param $password
+    * return string
+    */
+    public function hash_password($password)
+    {
+        $hash = password_hash($password, PASSWORD_BCRYPT);
+        return $hash;
+    }
 }
