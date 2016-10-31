@@ -58,8 +58,38 @@ class User
     */
     public function create($firstName, $lastName, $email, $password)
     {
-        $db = new DBHandler();
-        return $db->lastInsertId();
+        $id = null;
+        $sql = "INSERT INTO user (
+            user_id,
+            first_name,
+            last_name,
+            email,
+            password
+        )
+        VALUES (
+            :id,
+            :first_name,
+            :last_name,
+            :email,
+            :password
+        )";
+        $parameters = array(
+        ':id' => $id,
+        ':first_name' => $firstName,
+        ':last_name' => $lastName,
+        ':email' => $email,
+        ':password' => $password,
+        );
+        try {   
+            $db = new DBHandler();
+            $stmt = $db->getInstance()->prepare($sql);
+            $stmt->execute($parameters);
+            //return $db->lastInsertId();   
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            exit;
+        }
+        
     }
 
     /**
@@ -90,8 +120,7 @@ class User
             $db = new DBHandler();
             $stmt = $db->getInstance()->prepare($sql);
             $stmt->execute($parameters);	
-        } catch (PDOException $e)
-        {
+        } catch (PDOException $e) {
             echo $e->getMessage();
             exit;
         }
