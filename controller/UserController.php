@@ -15,23 +15,34 @@ class UserController
     */
     public function find($id=null)
     {
-    $userObj = new User();
-    $results = $userObj->read($id);
-    if (!$results) {
-        return array();
+        $userObj = new User();
+        $results = $userObj->read($id);
+        if (!$results) {
+            return array();
+        }
+        $users = array();
+        foreach ($results as $result) {
+            $user = array(
+            'id' => $result['user_id'],
+            'firstName' => $result['first_name'],
+            'lastName' => $result['last_name'],
+            'email' => $result['email'],
+            );
+            $users[] = $user;
+        }
+        return $users;
     }
-    $users = array();
-    foreach ($results as $result) {
-        $user = array(
-        'id' => $result['user_id'],
-        'firstName' => $result['first_name'],
-        'lastName' => $result['last_name'],
-        'email' => $result['email'],
-        );
-        $users[] = $user;
+
+    /**
+    * delete user
+    * return array
+    */
+    public function delete($id)
+    {
+        $userObj = new User();
+        $userObj->remove($id);
+        return $id;
     }
-    return $users;
-}
 
     /**
     * edit record for a specific user
