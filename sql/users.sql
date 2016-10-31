@@ -13,3 +13,17 @@ CREATE TABLE IF NOT EXISTS `user` (
 PRIMARY KEY (`user_id`),
 UNIQUE INDEX `email_unique_index` (`email`)
 ) ENGINE = InnoDB;
+
+INSERT INTO `user` (
+`user_id`,
+`email`,
+`first_name`,
+`last_name`,
+`password`
+) VALUES (
+NULL,
+'johnmigliorisi@gmail.com',
+'John',
+'Migliorisi',
+'secret'
+);
