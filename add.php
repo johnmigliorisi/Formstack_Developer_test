@@ -6,7 +6,20 @@ $userObj = new UserController();
 
 if (!empty($_POST['email'])) {
     // Update and redirect to home
-    $userObj->add($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['password']);
+    //hash the password right here so we don't send it unencrypted
+
+    /**
+    * encrypt the password before it is passed to the add function
+    * @param $password
+    * return string
+    */
+    function hash_password($password)
+    {
+        $hash = password_hash($password, PASSWORD_BCRYPT);
+        return $hash;
+    }
+    $hashed = hash_password($_POST['password']);
+    $userObj->add($_POST['firstName'], $_POST['lastName'], $_POST['email'], $hashed);
     header('Location: index.php');
 }
 ?>
