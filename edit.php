@@ -17,14 +17,26 @@ if (!empty($_POST['id'])) {
 <html>
     <head>
         <title>Formstack Developer Test - Edit User</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="styles/base.css" />
     </head>
     <body>
-        <form action="edit.php" method="POST">
-            <input type="email" name="email" value="<?= $user['email'] ?>">
-            <input type="text" name="firstName" value="<?= $user['firstName'] ?>">
-            <input type="text" name="lastName" value="<?= $user['lastName'] ?>">
-            <input type="hidden" name="id" value="<?= $userId ?>">
-            <button type="submit">Edit</button>
-        </form>
+        <header>
+            <h1>Formstack Developer Test</h1>
+        </header>
+        <main>
+            <article>
+                <form action="edit.php" method="POST">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" value="<?= $user['email'] ?>">
+                    <label for="firstName">First Name</label>
+                    <input type="text" name="firstName" value="<?= $user['firstName'] ?>">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" name="lastName" value="<?= $user['lastName'] ?>">
+                    <input type="hidden" name="id" value="<?= $userId ?>">
+                    <button type="submit">Edit</button>
+                </form>
+            </article>
+        </main>
     </body>
 </html>

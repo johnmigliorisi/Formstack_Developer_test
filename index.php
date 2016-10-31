@@ -12,17 +12,26 @@ if (!empty($_GET['id'])) {
 <html>
     <head>
         <title>Formstack Developer Test!</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="styles/base.css" />
     </head>
     <body>
-        <?php if ($users): ?>
-            <ul>
-                <?php foreach ($users as $user): ?>
-                <li><span><?= $user['firstName'] ?> <?= $user['lastName'] ?></span> <a href="edit.php?id=<?= $user['id'] ?>">Edit</a> <a href="index.php?id=<?= $user['id'] ?>">Delete</a></li>
-                <?php endforeach; ?>
-            </ul>
-        <?php else: ?>
-            <p>No users yet!!</p>
-        <?php endif; ?>
-        <p><a href="add.php">Add a user</a></p>
+        <header>
+            <h1>Formstack Developer Test</h1>
+        </header>
+        <main>
+            <article>
+                <?php if ($users): ?>
+                    <ul>
+                        <?php foreach ($users as $user): ?>
+                        <li><a class="edit" href="edit.php?id=<?= $user['id'] ?>">Edit</a> <a class="delete" href="index.php?id=<?= $user['id'] ?>">Delete</a> <span><?= $user['firstName'] ?> <?= $user['lastName'] ?></span></li>
+                        <?php endforeach; ?>
+                        <li><a class="add" href="add.php">Add a user</a></li>
+                    </ul>
+                <?php else: ?>
+                    <p>No users yet!!</p>
+                <?php endif; ?>
+            </article>
+        </main>
     </body>
 </html>
